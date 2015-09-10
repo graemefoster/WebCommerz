@@ -5,7 +5,6 @@ var webpack = require('webpack');
 var fs = require('fs');
 var dependencies = require('./getVendorDependencies.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var ncp = require('ncp').ncp;
 
 // Copy index to served folder.
 var copyDirs = ['./dist'];
@@ -13,22 +12,13 @@ copyDirs.forEach(function (dir) {
   if(!fs.existsSync(dir)) { fs.mkdirSync(dir); }
   fs.writeFileSync(dir + '/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
   fs.writeFileSync(dir + '/index-test.html', fs.readFileSync('./src/index-test.html'), {flag: 'w+'});
+  fs.writeFileSync(dir + '/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
 });
-
-
-ncp("./src/test-data/", './dist/test-data/', function(err) {
-  if (err) {
-     return console.error(err);
-   }
-   console.log('copied test-data!');
- });
-
-
 
 module.exports = {
   entry: {
       app: [
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://localhost:8090',
         'webpack/hot/only-dev-server',
         './src/main.jsx'
       ],
@@ -65,6 +55,7 @@ module.exports = {
     hot: true,
     inline: true
   },
+  devtool: 'sourcemap',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
      new webpack.NoErrorsPlugin(),

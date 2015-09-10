@@ -2,8 +2,6 @@ import AppDispatcher from '../dispatcher/AppDispatcher.jsx';
 import FeaturedItemConstants from '../constants/featuredItemConstants.jsx';
 import $ from 'jquery'
 
-console.log(FeaturedItemConstants);
-
 export default {
     fetch: () => {
 

@@ -5,8 +5,6 @@ import App from './App.jsx'
 import Featured from './components/featured/featured.jsx';
 import About from './components/about/about.jsx';
 
-import featuredItemActions from './actions/featuredItemActions.jsx';
-
 import './main.less';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
@@ -25,6 +23,3 @@ let routes = (
 Router.run(routes, Router.HashLocation, Root => {
   React.render(<Root />, document.body);
 });
-
-//Kick the whole thing off!
-featuredItemActions.fetch();

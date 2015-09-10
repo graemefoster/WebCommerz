@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/lib/Carousel';
 import CarouselItem from 'react-bootstrap/lib/CarouselItem';
 import FeaturedItemStore from '../../stores/featuredItemStore.jsx';
+import featuredItemActions from '../../actions/featuredItemActions.jsx';
 
 import './featured.less';
 
@@ -10,7 +11,7 @@ export default class Featured extends React.Component {
   constructor() {
     super();
     this._onChange = this._onChange.bind(this);
-    this.state = {items:[]};
+    this.state = {items: []};
   }
 
   _onChange() {
@@ -18,7 +19,11 @@ export default class Featured extends React.Component {
   }
 
   componentDidMount() {
+
     FeaturedItemStore.addChangeListener(this._onChange);
+
+    //Kick the whole thing off!
+    featuredItemActions.fetch();
   }
 
   componentWillUnmount() {
@@ -40,9 +45,14 @@ export default class Featured extends React.Component {
           </CarouselItem>);
 
     return (
-      <Carousel>
-        {this.state.items.map(x => renderItem(x))}
-      </Carousel>
+      <div>
+        <p>Featured Items!</p>
+        <Carousel>
+          {this.state.items.map(x =>
+            renderItem(x)
+          )}
+        </Carousel>
+      </div>
     );
   }
 }

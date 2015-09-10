@@ -30,12 +30,10 @@ export default _featuredItemStore
 
 AppDispatcher.register(function(payload) {
   let action = payload.action;
-
-  console.log(payload);
   switch(action.actionType) {
-        case FeaturedItemConstants.FEATUREDITEMS_REFRESH:
-          _data = action.data;
-          console.log('emitting change!~!!');
-          _featuredItemStore.emitChange();
-        };
-      });
+    case FeaturedItemConstants.FEATUREDITEMS_REFRESH:
+      _data = action.data;
+      _featuredItemStore.emitChange();
+    };
+  }
+);
