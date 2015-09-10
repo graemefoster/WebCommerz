@@ -16,7 +16,7 @@ copyDirs.forEach(function (dir) {
 });
 
 
-ncp("./src/test-data/", './dist/test-data', function(err) {
+ncp("./src/test-data/", './dist/test-data/', function(err) {
   if (err) {
      return console.error(err);
    }
