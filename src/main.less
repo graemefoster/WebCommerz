@@ -1,0 +1,48 @@
+@import 'common.less';
+
+body {
+    font-family: Segoe UI, helvetica, arial;
+
+    h1, h2, form {
+        margin: @standardMargin;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+
+    h3 {
+        font-size: 1.15em;
+    }
+
+    form {
+
+          button {
+              background-color: @important-color;
+              color:white;
+              padding:@standardPadding;
+              font-size:1.25em;
+              border:none;
+              margin:@standardMargin;
+              text-transform: uppercase
+          }
+      }
+
+    .calamariImportant {
+        color: @important-color;
+        font-size: 1.25em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .calamariErrors {
+        background-color:orangered;
+        color:white;
+        font-weight:bold;
+        padding:@standardPadding;
+    }
+}
