@@ -124,4 +124,5 @@ vendor
 node_modules
 dist
 api/packages
+.idea
 

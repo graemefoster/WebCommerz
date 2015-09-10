@@ -32,6 +32,8 @@ export default class Featured extends React.Component {
 
   render() {
 
+    console.log('oh no does not work in webstorm :(');
+
     let renderItem = x => (
         <CarouselItem key={x.id}>
           <img width={900} height={500} alt='900x500' src={x.metadata.image} />

@@ -7,13 +7,15 @@ var dependencies = require('./getVendorDependencies.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Copy index to served folder.
-var copyDirs = ['./dist'];
+var copyDirs = ['./dist', './dist/test-data'];
 copyDirs.forEach(function (dir) {
-  if(!fs.existsSync(dir)) { fs.mkdirSync(dir); }
-  fs.writeFileSync(dir + '/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
-  fs.writeFileSync(dir + '/index-test.html', fs.readFileSync('./src/index-test.html'), {flag: 'w+'});
-  fs.writeFileSync(dir + '/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
 });
+
+fs.writeFileSync('./dist/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
+fs.writeFileSync('./dist/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
 
 module.exports = {
   entry: {
