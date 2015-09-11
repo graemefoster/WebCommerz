@@ -6,8 +6,10 @@ var fs = require('fs');
 var dependencies = require('./getVendorDependencies.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var env = process.env.NODE_ENV || 'development'
+
 // Copy index to served folder.
-var copyDirs = ['./dist', './dist/test-data'];
+var copyDirs = ['./dist', './dist/test-data', './dev-server', './dev-server/test-data/'];
 copyDirs.forEach(function (dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
@@ -16,14 +18,25 @@ copyDirs.forEach(function (dir) {
 
 fs.writeFileSync('./dist/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
 fs.writeFileSync('./dist/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
+fs.writeFileSync('./dev-server/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
+fs.writeFileSync('./dev-server/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
+
+var env = process.env.NODE_ENV || 'development';
+var isProduction = env.trim().toUpperCase() === 'PRODUCTION';
+var isDevelopment = !isProduction;
+var entryPoints = [
+  './src/main.jsx'
+];
+
+//only start the hot-server if we are in development
+if(isDevelopment) {
+  console.log('detected development - will use hot-reload');
+  entryPoints.push('webpack-dev-server/client?http://localhost:8090');
+}
 
 module.exports = {
   entry: {
-      app: [
-        'webpack-dev-server/client?http://localhost:8090',
-        'webpack/hot/only-dev-server',
-        './src/main.jsx'
-      ],
+      app: entryPoints,
       vendor: dependencies
   },
   output: {
@@ -54,7 +67,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './dev-server',
-    hot: true,
+    hot: isDevelopment,
     inline: true
   },
   devtool: 'sourcemap',

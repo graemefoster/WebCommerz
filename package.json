@@ -36,9 +36,12 @@
     "react-router": "^0.13.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --progress --colors --content-base dist/ --port 8090",
-    "build-watch": "webpack -w --progress --colors",
-    "build:dev": "webpack"
+
+    "dev": "webpack-dev-server --progress --colors --hot --debug --devtool cheap-module-source-map --port 8090",
+    "prod": "SET NODE_ENV=production webpack-dev-server --progress --colors --hot -p",
+    "build:dev": "webpack --debug --devtool inline-source-map",
+    "build:prod": "SET NODE_ENV=production && webpack -p",
+    "lint": "eslint src"
   },
   "author": "Graeme Foster",
   "license": "ISC"
