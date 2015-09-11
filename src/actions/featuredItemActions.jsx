@@ -5,7 +5,7 @@ import $ from 'jquery'
 export default {
     fetch: () => {
 
-      $.get('/test-data/featured-items.json').success(data => {
+      $.get('/test-data/featured-items.js').success(data => {
             AppDispatcher.handleAction({
                 actionType: FeaturedItemConstants.FEATUREDITEMS_REFRESH,
                 data: data
