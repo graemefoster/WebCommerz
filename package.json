@@ -37,7 +37,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --progress --colors --content-base dist/ --port 8090",
-    "build": "webpack -w --progress --colors"
+    "build-watch": "webpack -w --progress --colors",
+    "build:dev": "webpack"
   },
   "author": "Graeme Foster",
   "license": "ISC"
