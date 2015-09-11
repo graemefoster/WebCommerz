@@ -12,7 +12,7 @@ script:
   - 'npm run build:dev'
 
 before_deploy:
-- ls && git add --a && git commit -m "auto push"
+- ls &&  git config --global user.email "travis@buildserver" &&  git config --global user.name "Travis CI" && git add --a && git commit -m "auto push"
 
 deploy:  
  provider: azure_web_apps
