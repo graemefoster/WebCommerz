@@ -38,9 +38,9 @@
   "scripts": {
 
     "dev": "webpack-dev-server --progress --colors --hot --debug --devtool cheap-module-source-map --port 8090",
-    "prod": "SET NODE_ENV=production webpack-dev-server --progress --colors --hot -p",
+    "prod": "set NODE_ENV=production webpack-dev-server --progress --colors --hot -p",
     "build:dev": "webpack --debug --devtool inline-source-map",
-    "build:prod": "SET NODE_ENV=production && webpack -p",
+    "build:prod": "set NODE_ENV=production && webpack -p",
     "lint": "eslint src"
   },
   "author": "Graeme Foster",
