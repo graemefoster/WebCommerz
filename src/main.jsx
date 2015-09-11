@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from 'react-router';
-import App from './App.jsx'
+import App from './app.jsx'
 
 import Featured from './components/featured/featured.jsx';
 import About from './components/about/about.jsx';
