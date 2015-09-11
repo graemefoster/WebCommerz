@@ -32,7 +32,7 @@ export default class Featured extends React.Component {
 
   render() {
 
-    console.log('oh no does not work in webstorm :(');
+    console.log('Go travis!!! :(');
 
     let renderItem = x => (
         <CarouselItem key={x.id}>
