@@ -12,8 +12,7 @@ script:
   - 'npm run build:dev'
 
 before_deploy:
-- ls && git add --a \
-  && git commit -m "auto push" \
+- ls && git add --a && git commit -m "auto push"
 
 deploy:  
  provider: azure_web_apps
