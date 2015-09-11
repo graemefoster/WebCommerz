@@ -12,7 +12,7 @@ script:
   - 'npm run build:dev'
 
 after_script:
-  - git add --a  \
+- git add --a \
   && git commit -m 'auto push' \
 
 deploy:  
