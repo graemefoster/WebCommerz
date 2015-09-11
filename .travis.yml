@@ -9,7 +9,7 @@ install:
 before_script:
 
 script:
-  - 'npm run build:dev'
+  - 'npm run build:prod'
 
 before_deploy:
 - ls &&  git config --global user.email "travis@buildserver" &&  git config --global user.name "Travis CI" && git checkout $TRAVIS_BRANCH && git add --a && git commit -m "auto push"
