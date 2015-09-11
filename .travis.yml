@@ -12,3 +12,6 @@ script:
   - 'npm run build:dev'
 
 after_script:
+
+deploy:  
+  provider: azure_web_apps
