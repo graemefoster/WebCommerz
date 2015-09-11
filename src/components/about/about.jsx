@@ -10,7 +10,7 @@ export default class About extends React.Component {
   render() {
     return (
       <Jumbotron>
-        <h1>Welcome to Webshop!!</h1>
+        <h1>Welcome to Mobi-Commerz!!</h1>
       </Jumbotron>
     );
   }
