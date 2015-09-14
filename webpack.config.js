@@ -28,7 +28,7 @@ var env = process.env.NODE_ENV || 'development';
 var isProduction = env.trim().toUpperCase() === 'PRODUCTION';
 var isDevelopment = !isProduction;
 var entryPoints = [
-  './src/main.jsx'
+  './src/index.js'
 ];
 
 //only start the hot-server if we are in development
@@ -55,7 +55,8 @@ module.exports = {
       }
     ],
     loaders: [
-      { test: /\.js[x]$/, exclude: /(node_modules|config)/, loaders: ['react-hot', 'babel-loader'] },
+      { test: /\.js$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
+      { test: /\.jsx$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
       { test: /\.(less|css)$/, loader: ExtractTextPlugin.extract('style-loader', 'css!less') },
       { test: /\.(otf|eot|png|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }

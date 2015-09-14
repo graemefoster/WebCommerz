@@ -17,8 +17,8 @@ export default class Header extends React.Component {
           <Navbar brand="Webshop MOB" inverse toggleNavKey={0}>
             <CollapsibleNav eventKey={0}>
               <Nav navbar>
-                <NavItem eventKey={1} href={this.context.router.makeHref('about')}>About</NavItem>
-                <NavItem eventKey={2} href={this.context.router.makeHref('featured')}>Featured</NavItem>
+                <NavItem eventKey={1} href={this.context.history.createHref('about')}>About</NavItem>
+                <NavItem eventKey={2} href={this.context.history.createHref('featured')}>Featured</NavItem>
               </Nav>
             </CollapsibleNav>
           </Navbar>
@@ -27,5 +27,5 @@ export default class Header extends React.Component {
 }
 
 Header.contextTypes = {
-  router: React.PropTypes.func.isRequired
+    history: React.PropTypes.func.isRequired
 };

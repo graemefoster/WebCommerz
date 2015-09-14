@@ -1,38 +1,11 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Carousel from 'react-bootstrap/lib/Carousel';
 import CarouselItem from 'react-bootstrap/lib/CarouselItem';
-import FeaturedItemStore from '../../stores/featuredItemStore.jsx';
-import featuredItemActions from '../../actions/featuredItemActions.jsx';
-
 import './featured.less';
 
 export default class Featured extends React.Component {
 
-  constructor() {
-    super();
-    this._onChange = this._onChange.bind(this);
-    this.state = {items: []};
-  }
-
-  _onChange() {
-    this.setState({items: FeaturedItemStore.getAll()});
-  }
-
-  componentDidMount() {
-
-    FeaturedItemStore.addChangeListener(this._onChange);
-
-    //Kick the whole thing off!
-    featuredItemActions.fetch();
-  }
-
-  componentWillUnmount() {
-    FeaturedItemStore.removeChangeListener(this._onChange);
-  }
-
   render() {
-
-    console.log('Go travis!!! :(');
 
     let renderItem = x => (
         <CarouselItem key={x.id}>
@@ -50,7 +23,7 @@ export default class Featured extends React.Component {
       <div>
         <p>Featured Items!</p>
         <Carousel>
-          {this.state.items.map(x =>
+          {this.props.items.map(x =>
             renderItem(x)
           )}
         </Carousel>
@@ -58,3 +31,7 @@ export default class Featured extends React.Component {
     );
   }
 }
+
+Featured.propTypes = {
+  items: PropTypes.array.isRequired
+};
