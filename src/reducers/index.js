@@ -1,3 +1,5 @@
+import objectAssign from 'object-assign'
+
 import {
     FETCH_FEATUREDITEMS,
     REQUEST_FEATUREDITEMS, RECEIVE_FEATUREDITEMS
@@ -9,13 +11,13 @@ function rootReducer(state = {
 }, action) {
     switch (action.type) {
         case FETCH_FEATUREDITEMS:
-            return Object.assign({}, state, {
+            return objectAssign({}, state, {
             });
         case REQUEST_FEATUREDITEMS:
-            return Object.assign({}, state, {
+            return objectAssign({}, state, {
             });
         case RECEIVE_FEATUREDITEMS:
-            return Object.assign({}, state, {
+            return objectAssign({}, state, {
                 items: action.items
             });
         default:
