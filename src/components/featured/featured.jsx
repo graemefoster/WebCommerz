@@ -23,7 +23,7 @@ export default class Featured extends React.Component {
       <div>
         <p>Featured Items!</p>
         <Carousel>
-          {this.props.items.map(x =>
+          { (this.props.items || []).map(x =>
             renderItem(x)
           )}
         </Carousel>
