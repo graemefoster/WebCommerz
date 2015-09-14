@@ -27,5 +27,5 @@ export default class Header extends React.Component {
 }
 
 Header.contextTypes = {
-    history: React.PropTypes.func.isRequired
+    history: React.PropTypes.object.isRequired
 };
