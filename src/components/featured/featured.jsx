@@ -48,7 +48,6 @@ Featured.propTypes = {
 
 function mapStateToProps(state) {
     const { items } = state;
-    alert(state.items);
     return {
         items: items
     };
