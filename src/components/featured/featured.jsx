@@ -1,9 +1,18 @@
 import React, {PropTypes} from 'react';
 import Carousel from 'react-bootstrap/lib/Carousel';
 import CarouselItem from 'react-bootstrap/lib/CarouselItem';
+
+import { connect } from 'react-redux';
+import { fetchFeaturedItems } from '../../actions';
+
 import './featured.less';
 
-export default class Featured extends React.Component {
+class Featured extends React.Component {
+
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(fetchFeaturedItems());
+    }
 
   render() {
 
@@ -35,3 +44,13 @@ export default class Featured extends React.Component {
 Featured.propTypes = {
   items: PropTypes.array.isRequired
 };
+
+
+function mapStateToProps(state) {
+    const { items } = state;
+    return {
+        items: items
+    };
+}
+export default connect(mapStateToProps)(Featured);
+
