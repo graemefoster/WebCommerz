@@ -6,8 +6,8 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import Button from 'react-bootstrap/lib/Button';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-import Panel from 'react-bootstrap/lib/Panel';
 import Input from 'react-bootstrap/lib/Input';
+import Panel from 'react-bootstrap/lib/Panel';
 
 import './header.less';
 
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <div>
-                <Navbar brand="Webshop MOB" inverse toggleNavKey={0}>
+                <Navbar brand="Mobi-Commerz" toggleNavKey={0}>
                     <CollapsibleNav eventKey={0}>
                         <Nav navbar>
                             <NavItem eventKey={1} href={this.context.history.createHref('about')}>About</NavItem>
@@ -33,12 +33,12 @@ export default class Header extends React.Component {
                     <ButtonToolbar>
                         <Button><Glyphicon glyph="user"/></Button>
                         <Button className="pull-right"
-                                onClick={ ()=> this.setState({ open: !this.state.open })}><Glyphicon
+                                onClick={ () => this.setState({ open: !this.state.open })}><Glyphicon
                             glyph="search"/></Button>
                     </ButtonToolbar>
                 </Navbar>
-                <Panel inverse collapsible="true" expanded={this.state.open}>
-                    <Input type="text" placeholder="Search..." />
+                <Panel collapsible="true" expanded={this.state.open} >
+                    <Input type="text" placeholder="Search..."/>
                 </Panel>
             </div>
         );
