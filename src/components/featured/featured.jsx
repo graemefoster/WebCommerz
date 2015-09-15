@@ -10,7 +10,7 @@ import './featured.less';
 class Featured extends React.Component {
 
     componentDidMount() {
-        const { dispatch } = this.props;
+        const { dispatch } = this.props; //this comes because we "connect'ed" our class to the store
         dispatch(fetchFeaturedItems());
     }
 
@@ -46,11 +46,14 @@ Featured.propTypes = {
 };
 
 
+//takes what we want from the root store and assigns to props on the local component.
 function mapStateToProps(state) {
     const { items } = state;
     return {
         items: items
     };
 }
+
+//the default export is the connected 'wrapper' around this class. Not the class itself.
 export default connect(mapStateToProps)(Featured);
 
