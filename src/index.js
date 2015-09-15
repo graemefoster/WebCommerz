@@ -18,12 +18,23 @@ const store = configureStore();
 let history = createHashHistory();
 
 React.render(
-    <Provider store={store}>{() =>
-        <Router history={history}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Featured} />
-                <Route path="featured" component={Featured}/>
-                <Route path="about" component={About}/>
-            </Route>
-        </Router>
-    }</Provider>, document.getElementById("container"));
+    <div>
+        <Provider store={store}>{() =>
+            <Router history={history}>
+                <Route path="/" component={App}>
+                    <IndexRoute component={Featured} />
+                    <Route path="featured" component={Featured}/>
+                    <Route path="about" component={About}/>
+                </Route>
+            </Router>
+        }</Provider>
+
+    </div>, document.getElementById("container"));
+
+
+//To debug state on UI:
+//import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+//<DebugPanel left top bottom>
+//    <DevTools store={store} monitor={LogMonitor} />
+//</DebugPanel>
+
