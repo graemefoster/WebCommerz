@@ -19,7 +19,7 @@ copyDirs.forEach(function (dir) {
 fs.writeFileSync('./dist/web.config', fs.readFileSync('./web.config'), {flag: 'w+'});
 fs.writeFileSync('./dist/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
 fs.writeFileSync('./dist/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
-fs.writeFileSync('./dist/server.js', fs.readFileSync('./server.js'), {flag: 'w+'});
+//fs.writeFileSync('./dist/server.js', fs.readFileSync('./server.js'), {flag: 'w+'});
 
 fs.writeFileSync('./dev-server/web.config', fs.readFileSync('./web.config'), {flag: 'w+'});
 fs.writeFileSync('./dev-server/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
