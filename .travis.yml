@@ -10,8 +10,3 @@ before_script:
 
 script:
   - 'npm run build:dev'
-
-deploy:
- provider: azure_web_apps
- verbose: true
- 
