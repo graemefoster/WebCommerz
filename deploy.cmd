@@ -73,7 +73,7 @@ IF /I "packages.json" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-:: 4. Restore Gulp packages and run Gulp tasks
+:: 2. Run webpack
 IF /I "webpack.config.js" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
   echo Running webpack deployment: Starting %TIME%
