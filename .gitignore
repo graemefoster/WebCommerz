@@ -125,4 +125,5 @@ node_modules
 dev-server
 api/packages
 .idea
+dist
 

@@ -43,7 +43,7 @@ module.exports = {
       vendor: dependencies
   },
   output: {
-    path: path.join(__dirname, './dist/'),
+    path: path.join(__dirname, isProduction ? './dist' : './dev-server/'),
     filename: 'site.js'
   },
   module: {
