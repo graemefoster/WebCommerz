@@ -1,11 +1,13 @@
-require("babel/register")({experimental: true});
+require("babel/register");
 
 var express = require('express'),
     path = require('path'),
     app = express(),
     port = 4444,
     react = require('react'),
-    application = require('./src/components/footer/footer.jsx');
+    serverRender = require('./src/index._server');
+
+console.log(serverRender);
 
 // Include static assets. Not advised for production
 app.use(express.static(path.join(__dirname, 'public')));
@@ -20,9 +22,7 @@ app.set('view engine', 'ejs');
 var app = express();
 
 app.get('/', function(req, res) {
-    var component = react.createElement(application);
-    var reactHtml = react.renderToString(component);
-    res.render('./index.ejs', { reactOutput: reactHtml });
+   res.render('./index.ejs', { reactOutput: serverRender(req.url) });
 });
 
 app.get('*', function(req, res) {
