@@ -1,16 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import routes from './routes/routes.jsx'
+import Routes from './routes/routes.jsx'
+import {Router} from 'react-router';
 import configureStore from './store/configureStore';
 import './index.less';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import createHashHistory from 'history/lib/createHashHistory';
 
 // declare our routes and their hierarchy
 const store = configureStore();
 
+let history = createHashHistory();
+
 React.render(
     <div>
-        <Provider store={store}>{() => routes}</Provider>
+        <Provider store={store}>{() => <Router history={history}>{Routes}</Router>}</Provider>
     </div>, document.getElementById("container"));
 
 

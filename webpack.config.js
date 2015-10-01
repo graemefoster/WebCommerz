@@ -37,7 +37,9 @@ if(isDevelopment) {
   entryPoints.push('webpack-dev-server/client?http://localhost:8090');
 }
 
-module.exports = {
+module.exports = [
+  {
+    name: "Browser",
   entry: {
       app: entryPoints,
       vendor: dependencies
@@ -47,13 +49,13 @@ module.exports = {
     filename: 'site.js'
   },
   module: {
-    //preLoaders: [
-    //  {
-    //    test: /(\.js$|\.jsx$)/,
-    //    loader: 'eslint-loader',
-    //    exclude: /node_modules/
-    //  }
-    //],
+    preLoaders: [
+      {
+        test: /(\.js$|\.jsx$)/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       { test: /\.js$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
       { test: /\.jsx$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
@@ -63,7 +65,7 @@ module.exports = {
     ]
   },
   eslint: {
-      configFile: '.eslintrc'
+    configFile: '.eslintrc'
   },
   resolve: {
     // you can now require('file') instead of require('file.coffee')
@@ -77,9 +79,9 @@ module.exports = {
   devtool: 'sourcemap',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
-     new webpack.NoErrorsPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin( { $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' }),
     new ExtractTextPlugin('styles.css')
-   ]
-};
+  ]}
+];

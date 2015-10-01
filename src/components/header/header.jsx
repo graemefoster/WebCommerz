@@ -9,8 +9,6 @@ import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import Input from 'react-bootstrap/lib/Input';
 import Panel from 'react-bootstrap/lib/Panel';
 
-import './header.less';
-
 export default class Header extends React.Component {
 
     constructor() {

@@ -5,8 +5,6 @@ import CarouselItem from 'react-bootstrap/lib/CarouselItem';
 import { connect } from 'react-redux';
 import { fetchFeaturedItems } from '../../actions';
 
-import './featured.less';
-
 class Featured extends React.Component {
 
     componentDidMount() {
