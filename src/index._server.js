@@ -1,7 +1,7 @@
 import React from 'react';
-import Routes from './routes/routes.jsx'
 import { Provider } from 'react-redux';
 import { RoutingContext, match } from 'react-router'
+import routes from './routes/routes.jsx'
 import createLocation from 'history/lib/createLocation';
 //import configureStore from './store/configureStore';
 
@@ -9,16 +9,15 @@ import createLocation from 'history/lib/createLocation';
 const store = {
     subscribe: function(){},
     dispatch: function(){},
-    getState: function(){}
+    getState: function(){ return {items:[]}}
 };
 
 var serverRender = function(url, response) {
-    let location = createLocation('/about');
+    let location = createLocation(url);
     var html;
-    match({ Routes, location}, (error, redirectLocation, renderProps) => {
-        var app = <div><RoutingContext location={location} /></div>;
+    match({ routes, location}, (error, redirectLocation, renderProps) => {
+        var app = <div><Provider store={store}>{() => <RoutingContext {...renderProps} />}</Provider></div>;
         html = React.renderToString(app);
-        console.log(html);
     });
     return html;
 };
