@@ -13,6 +13,7 @@ const store = {
 };
 
 var serverRender = function(url, response) {
+    console.log(url);
     let location = createLocation(url);
     var html;
     match({ routes, location}, (error, redirectLocation, renderProps) => {

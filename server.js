@@ -21,14 +21,8 @@ app.set('view engine', 'ejs');
 //Route not found -- Set 404
 var app = express();
 
-app.get('/', function(req, res) {
-   res.render('./index.ejs', { reactOutput: serverRender(req.url) });
-});
-
 app.get('*', function(req, res) {
-    res.json({
-        'route': 'Sorry this page does not exist!'
-    });
+   res.render('./index.ejs', { reactOutput: serverRender(req.url) });
 });
 
 app.listen(port);
