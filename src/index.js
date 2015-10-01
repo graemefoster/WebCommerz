@@ -24,4 +24,3 @@ React.render(
 //    <DevTools store={store} monitor={LogMonitor} />
 //</DebugPanel>
 
-console.log('hi world!!');
