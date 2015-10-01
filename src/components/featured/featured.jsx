@@ -28,7 +28,7 @@ class Featured extends React.Component {
 
     return (
       <div>
-        <p>Featured Items!</p>
+        <p>!! ** **** Featured Items!</p>
         <Carousel>
           { (this.props.items || []).map(x =>
             renderItem(x)

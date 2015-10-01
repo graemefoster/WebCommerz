@@ -5,12 +5,12 @@ import {Router} from 'react-router';
 import configureStore from './store/configureStore';
 import './index.less';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import createHashHistory from 'history/lib/createHashHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 // declare our routes and their hierarchy
 const store = configureStore();
 
-let history = createHashHistory();
+let history = createBrowserHistory();
 
 React.render(
     <div>
@@ -24,3 +24,4 @@ React.render(
 //    <DevTools store={store} monitor={LogMonitor} />
 //</DebugPanel>
 
+console.log('hi world!!');

@@ -35,7 +35,7 @@ export default class Header extends React.Component {
                             glyph="search"/></Button>
                     </ButtonToolbar>
                 </Navbar>
-                <Panel collapsible="true" expanded={this.state.open} >
+                <Panel expanded={this.state.open} >
                     <Input type="text" placeholder="Search..."/>
                 </Panel>
             </div>

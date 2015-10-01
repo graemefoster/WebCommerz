@@ -17,11 +17,9 @@ copyDirs.forEach(function (dir) {
 });
 
 fs.writeFileSync('./dist/web.config', fs.readFileSync('./web.config'), {flag: 'w+'});
-fs.writeFileSync('./dist/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
 fs.writeFileSync('./dist/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
 
 fs.writeFileSync('./dev-server/web.config', fs.readFileSync('./web.config'), {flag: 'w+'});
-fs.writeFileSync('./dev-server/index.html', fs.readFileSync('./src/index.html'), {flag: 'w+'});
 fs.writeFileSync('./dev-server/test-data/featured-items.json', fs.readFileSync('./src/test-data/featured-items.json'), {flag: 'w+'});
 
 var env = process.env.NODE_ENV || 'development';
@@ -37,7 +35,7 @@ if(isDevelopment) {
   entryPoints.push('webpack-dev-server/client?http://localhost:8090');
 }
 
-module.exports = [
+module.exports =
   {
     name: "Browser",
   entry: {
@@ -45,7 +43,7 @@ module.exports = [
       vendor: dependencies
   },
   output: {
-    path: path.join(__dirname, isProduction ? './dist' : './dev-server/'),
+    path: path.join(__dirname, './dist/'),
     filename: 'site.js'
   },
   module: {
@@ -72,7 +70,7 @@ module.exports = [
     extensions: ['', '.js', '.json', '.jsx']
   },
   devServer: {
-    contentBase: './dev-server',
+    contentBase: './dist',
     hot: isDevelopment,
     inline: true
   },
@@ -84,4 +82,4 @@ module.exports = [
     new webpack.ProvidePlugin( { $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' }),
     new ExtractTextPlugin('styles.css')
   ]}
-];
+;

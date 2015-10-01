@@ -45,7 +45,7 @@
     "redux-thunk": "^0.1.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --progress --colors --hot --debug --devtool cheap-module-source-map --port 8090",
+    "dev": "webpack-dev-server --progress --colors --hot --debug --port 8090",
     "prod": "set NODE_ENV=production webpack-dev-server --progress --colors --hot -p",
     "build:dev": "webpack --debug --devtool inline-source-map",
     "build:prod": "set NODE_ENV=production && webpack -p",

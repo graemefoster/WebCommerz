@@ -5,25 +5,30 @@ var express = require('express'),
     app = express(),
     port = 4444,
     react = require('react'),
-    serverRender = require('./src/index._server');
+    configureServer = require('./src/index._server');
 
-console.log(serverRender);
-
-// Include static assets. Not advised for production
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Set view path
-app.set('views', path.join(__dirname, 'views'));
-
-// set up ejs for templating. You can use whatever
-app.set('view engine', 'ejs');
-
-//Route not found -- Set 404
-var app = express();
-
-app.get('*', function(req, res) {
-   res.render('./index.ejs', { reactOutput: serverRender(req.url) });
-});
+configureServer(app);
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.listen(port);
-console.log('Server is Up and Running at Port : ' + port);
+console.log('Server is Up and Running at Port : ' +  port);
+
+// we start a webpack-dev-server with our config
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config.js');
+
+var compiler = webpack(config);
+var server = new WebpackDevServer(compiler, {
+    proxy: {
+        "*": "http://localhost:4444"
+    },
+    stats: { colors: true }
+});
+server.listen(8090, 'localhost', function (err, result) {
+       if (err) {
+             console.log(err);
+           }
+
+           console.log('Listening at localhost:8090');
+    });
