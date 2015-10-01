@@ -68,8 +68,7 @@ IF NOT DEFINED MSBUILD_PATH (
 :: 1. Restore NPM packages
 IF /I "packages.json" NEQ "" (
   echo Installing npm packages: Starting %TIME%
-  call npm install
-  call npm dedupe
+  call npm install --production
   echo Installing npm packages: Finished %TIME%
   IF !ERRORLEVEL! NEQ 0 goto error
 )
