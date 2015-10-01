@@ -47,13 +47,13 @@ module.exports = {
     filename: 'site.js'
   },
   module: {
-    preLoaders: [
-      {
-        test: /(\.js$|\.jsx$)/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ],
+    //preLoaders: [
+    //  {
+    //    test: /(\.js$|\.jsx$)/,
+    //    loader: 'eslint-loader',
+    //    exclude: /node_modules/
+    //  }
+    //],
     loaders: [
       { test: /\.js$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
       { test: /\.jsx$/, exclude: /(node_modules)/, loaders: ['react-hot', 'babel-loader'] },
