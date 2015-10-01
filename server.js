@@ -5,7 +5,7 @@ var express = require('express'),
     app = express(),
     port = 4444,
     react = require('react'),
-    configureServer = require('./src/index._server');
+    configureServer = require('./src/index_server');
 
 configureServer(app);
 app.use(express.static(path.join(__dirname, 'dist')));

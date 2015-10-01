@@ -65,28 +65,30 @@ IF NOT DEFINED MSBUILD_PATH (
 :: Deployment
 :: ----------
 
-:: 1. Restore NPM packages
+:: 1. KuduSync
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  echo Running Kudu Sync: Starting %TIME%
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  echo Running Kudu Sync: Finished %TIME%
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
+
+:: 2. Restore NPM packages
 IF /I "packages.json" NEQ "" (
+  CD %DEPLOYMENT_TARGET%
   echo Installing npm packages: Starting %TIME%
+  call npm --version
   call npm install
   echo Installing npm packages: Finished %TIME%
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-:: 2. Run webpack
+:: 3. Run webpack
 IF /I "webpack.config.js" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
   echo Running webpack deployment: Starting %TIME%
   call npm run build:prod
   echo Running webpack deployment: Finished %TIME%
-  IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-:: 3. KuduSync
-IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  echo Running Kudu Sync: Starting %TIME%
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
-  echo Running Kudu Sync: Finished %TIME%
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
