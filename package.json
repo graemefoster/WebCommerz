@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Webshop Reskin - How fast can you go!!??",
   "main": "wwwroot/js/site.js",
+  "engines": {
+    "npm": ">3.0.0"
+  },
   "devDependencies": {
 
     "babel": "^5.8.23",
