@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import rootReducer from './reducers';
 
 
-export function configureServer(expressServer) {
+var configureServer = function(expressServer) {
 
     expressServer.use(function(req, res, next) {
 
@@ -48,3 +48,6 @@ export function configureServer(expressServer) {
     });
 
 };
+
+export default configureServer;
+
