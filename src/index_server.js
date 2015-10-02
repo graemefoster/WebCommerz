@@ -12,16 +12,13 @@ var configureServer = function(expressServer) {
     expressServer.use(function(req, res, next) {
 
         let location = createLocation(req.url);
-        let history = undefined;
 
-        match({ routes, history, location}, (error, redirectLocation, renderProps) => {
+        match({ routes, location}, (error, redirectLocation, renderProps) => {
 
             if (renderProps) {
 
-                console.log(location);
-
                 let store = createStore(rootReducer);
-                let app = <div><Provider store={store}>{() => <RoutingContext history={history} {...renderProps} />}</Provider></div>;
+                let app = <div><Provider store={store}>{() => <RoutingContext {...renderProps} />}</Provider></div>;
 
                 let html = React.renderToString(app);
 
