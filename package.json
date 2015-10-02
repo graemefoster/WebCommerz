@@ -4,7 +4,7 @@
   "description": "Webshop Reskin - How fast can you go!!??",
   "main": "wwwroot/js/site.js",
   "engines": {
-    "npm": ">3.0.0"
+    "node": "4.1.x"
   },
   "devDependencies": {
 
