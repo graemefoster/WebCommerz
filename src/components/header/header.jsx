@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import Input from 'react-bootstrap/lib/Input';
 import Panel from 'react-bootstrap/lib/Panel';
+import {Link} from 'react-router';
 
 export default class Header extends React.Component {
 
@@ -24,8 +25,8 @@ export default class Header extends React.Component {
                 <Navbar brand="Mobi-Commerz" toggleNavKey={0}>
                     <CollapsibleNav eventKey={0}>
                         <Nav navbar>
-                            <NavItem eventKey={1} href={this.context.history.createHref('about')}>About</NavItem>
-                            <NavItem eventKey={2} href={this.context.history.createHref('featured')}>Featured</NavItem>
+                            <NavItem eventKey={1}><Link to='/about'>About</Link></NavItem>
+                            <NavItem eventKey={2}><Link to='/featured'>Featured</Link></NavItem>
                         </Nav>
                     </CollapsibleNav>
                     <ButtonToolbar>
@@ -43,6 +44,3 @@ export default class Header extends React.Component {
     }
 }
 
-Header.contextTypes = {
-    history: React.PropTypes.object.isRequired
-};
